@@ -6,7 +6,7 @@ module.exports = {
             for (let player of results) {
                 message.channel.send({
                     "embed": {
-                        "description":g
+                        "description":
                             "** Name: **" + "<@" + player.discord_uid + ">" +
                             "** Hours: **" + player.total_hours
                     }
