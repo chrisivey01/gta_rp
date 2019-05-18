@@ -1,0 +1,19 @@
+{
+  "name": "gta-rp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "components/database.js",
+  "dependencies": {
+    "cron": "^1.7.1",
+    "discord.js": "^11.5.0",
+    "mysql": "^2.17.1",
+    "nodemon": "^1.19.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "nodemon --inspect gta-rp-bot.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
