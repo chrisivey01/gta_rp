@@ -30,7 +30,7 @@ beginClockOut = async (message, database, discord_uid, results) => {
     weekly_hours = resultsTime.h + results[0].weekly_hours;
     total_hours = resultsTime.h + results[0].total_hours;
 
-    message.channel.send("You've clocked out at " + currentTimeFormatted + " CST. A total of " + resultsTime.h + " hours and " + resultsTime.m + " minutes. " +
+    message.channel.send("You've clocked out at " + currentTimeFormatted + " server time. A total of " + resultsTime.h + " hours and " + resultsTime.m + " minutes. " +
         "You've logged " + weekly_hours + " hours this week and " + total_hours + " hours total.");
 
     const sql = "UPDATE gta_rp SET clock_in = ?, clock_out = ?, total_hours = ?, weekly_hours = ? WHERE discord_uid = ?";

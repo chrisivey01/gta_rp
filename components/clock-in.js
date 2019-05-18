@@ -17,7 +17,7 @@ beginClockIn = async (message, database, discord_uid) => {
     const currentTime = new Date();
     const currentTimeFormatted = currentTime.toLocaleTimeString("en-US", {hour: "numeric", minute: "numeric"});
 
-    message.channel.send("You've clocked in at " + currentTimeFormatted + " CST");
+    message.channel.send("You've clocked in at " + currentTimeFormatted + " server time.");
 
     const startClock = [
         currentTime,
