@@ -1,3 +1,4 @@
 node_modules/
 auth.json
+database.js
 .idea/
