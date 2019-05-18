@@ -19,23 +19,23 @@ new cron("0 59 23 * * FRI", () =>{
 client.login(config.token);
 
 client.on("message", async message => {
-    if (message.content.startsWith("!register") && message.channel.id === 579428028455714816) {
+    if (message.content.startsWith("!register") && message.channel.id === "579428028455714816") {
         register.register(message, database);
     }
 
-    if (message.content.startsWith("!clockin") && message.channel.id === 579428028455714816) {
+    if (message.content.startsWith("!clockin") && message.channel.id === "579428028455714816") {
         clockIn.clockIn(message, database)
     }
 
-    if (message.content.startsWith("!clockout") && message.channel.id === 579428028455714816) {
+    if (message.content.startsWith("!clockout") && message.channel.id === "579428028455714816") {
         clockOut.clockOut(message, database)
     }
 
-    if (message.content.startsWith("!weekly") && message.channel.id === 579428028455714816) {
+    if (message.content.startsWith("!weekly") && message.channel.id === "579428028455714816") {
         weekly.weekly(message, database)
     }
 
-    if (message.content.startsWith("!total") && message.channel.id === 579428028455714816) {
+    if (message.content.startsWith("!total") && message.channel.id === "579428028455714816") {
         total.total(message, database)
     }
 });
