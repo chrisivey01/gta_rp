@@ -1,7 +1,7 @@
 module.exports = {
-    clockOut: async (message, database) => {
+    clockOut: async (message, database, table) => {
         const discord_uid = message.author.id;
-        const sql = "SELECT * FROM gta_rp WHERE discord_uid = ?";
+        const sql = "SELECT * FROM "+ table +" WHERE discord_uid = ?";
 
         let results;
         try {
@@ -9,11 +9,11 @@ module.exports = {
         } catch (err) {
             return message.channel.send("You're not in the database, please !register first.")
         }
-        beginClockOut(message, database, discord_uid, results)
+        beginClockOut(message, database, discord_uid, results, table)
     }
 };
 
-beginClockOut = async (message, database, discord_uid, results) => {
+beginClockOut = async (message, database, discord_uid, results, table) => {
 
     const currentTime = new Date();
     const currentTimeFormatted = currentTime.toLocaleTimeString("en-US", {hour: "numeric", minute: "numeric"});
@@ -33,7 +33,7 @@ beginClockOut = async (message, database, discord_uid, results) => {
     message.channel.send("You've clocked out at " + currentTimeFormatted + " server time. A total of " + resultsTime.h + " hours and " + resultsTime.m + " minutes. " +
         "You've logged " + weekly_hours + " hours this week and " + total_hours + " hours total.");
 
-    const sql = "UPDATE gta_rp SET clock_in = ?, clock_out = ?, total_hours = ?, weekly_hours = ? WHERE discord_uid = ?";
+    const sql = "UPDATE "+ table +" SET clock_in = ?, clock_out = ?, total_hours = ?, weekly_hours = ? WHERE discord_uid = ?";
     const data = [currentTime, currentTime, total_hours, weekly_hours, discord_uid];
 
     try {

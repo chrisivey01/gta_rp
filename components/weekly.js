@@ -1,6 +1,6 @@
 module.exports = {
-    weekly: async (message, database) => {
-        const sql = "SELECT * from gta_rp WHERE weekly_hours IS NOT NULL";
+    weekly: async (message, database, table) => {
+        const sql = "SELECT * from "+ table +" WHERE weekly_hours IS NOT NULL";
         const results = await database.query(sql);
         try {
             for (let player of results) {

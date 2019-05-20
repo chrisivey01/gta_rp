@@ -16,26 +16,60 @@ new cron("0 59 23 * * FRI", () =>{
     database.query(sql)
 });
 
+new cron("0 59 23 * * FRI", () =>{
+    let sql = "UPDATE gta_ems SET weekly_hours = 0";
+    database.query(sql)
+});
+
 client.login(config.token);
 
 client.on("message", async message => {
-    if (message.content.startsWith("!register") && message.channel.id === "579428028455714816") {
-        register.register(message, database);
+    let table;
+
+    if (message.content.startsWith("!register") && message.channel.id === "579428028455714816" || (message.content.startsWith("!register") &&  message.channel.id === "571551283262128148")) {
+        if(message.channel.id === "579428028455714816") {
+            table = "gta_rp";
+        }else{
+            table = "gta_ems";
+        }
+        register.register(message, database, table);
+
     }
 
-    if (message.content.startsWith("!clockin") && message.channel.id === "579428028455714816") {
-        clockIn.clockIn(message, database)
+    if (message.content.startsWith("!clockin") && message.channel.id === "579428028455714816" || (message.content.startsWith("!clockin") &&  message.channel.id === "571551283262128148")) {
+        if(message.channel.id === "579428028455714816") {
+            table = "gta_rp";
+        }else{
+            table = "gta_ems";
+        }
+        clockIn.clockIn(message, database, table)
+
     }
 
-    if (message.content.startsWith("!clockout") && message.channel.id === "579428028455714816") {
-        clockOut.clockOut(message, database)
+    if (message.content.startsWith("!clockout") && message.channel.id === "579428028455714816" || (message.content.startsWith("!clockout") &&  message.channel.id === "571551283262128148")) {
+        if(message.channel.id === "579428028455714816") {
+            table = "gta_rp";
+        }else{
+            table = "gta_ems";
+        }
+        clockOut.clockOut(message, database, table)
     }
 
-    if (message.content.startsWith("!weekly") && message.channel.id === "579428028455714816") {
-        weekly.weekly(message, database)
+    if (message.content.startsWith("!weekly") && message.channel.id === "579428028455714816" || (message.content.startsWith("!weekly") &&  message.channel.id === "571551283262128148")) {
+        if(message.channel.id === "579428028455714816") {
+            table = "gta_rp";
+        }else{
+            table = "gta_ems";
+        }
+        weekly.weekly(message, database, table)
     }
 
-    if (message.content.startsWith("!total") && message.channel.id === "579428028455714816") {
-        total.total(message, database)
+    if ((message.content.startsWith("!total") && message.channel.id === "579428028455714816" ) || (message.content.startsWith("!total") &&  message.channel.id === "571551283262128148")) {
+        if(message.channel.id === "579428028455714816") {
+            table = "gta_rp";
+        }else{
+            table = "gta_ems";
+        }
+        total.total(message, database, table)
     }
 });
