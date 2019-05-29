@@ -1,4 +1,4 @@
 node_modules/
 auth.json
-database.js
+components/database.js
 .idea/

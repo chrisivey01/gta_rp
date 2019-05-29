@@ -3,11 +3,17 @@ const client = new Discord.Client();
 const config = require("./auth.json");
 
 const database = require("./components/database");
-const register = require("./components/register");
-const clockIn = require("./components/clock-in");
-const clockOut = require("./components/clock-out");
-const weekly = require("./components/weekly");
-const total = require("./components/total");
+
+/*Clock in / out information for police and EMS*/
+const register = require("./components/clockin-clockout/register");
+const clockIn = require("./components/clockin-clockout/clock-in");
+const clockOut = require("./components/clockin-clockout/clock-out");
+const weekly = require("./components/clockin-clockout/weekly");
+const total = require("./components/clockin-clockout/total");
+
+//Police report information
+const reports = require("./components/police-reports/reports");
+
 
 const cron = require("cron").CronJob;
 
@@ -71,5 +77,9 @@ client.on("message", async message => {
             table = "gta_ems";
         }
         total.total(message, database, table)
+    }
+
+    if(message.content.startsWith("!report")){
+        reports.reports(message, database, Discord)
     }
 });
