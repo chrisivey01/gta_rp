@@ -15,14 +15,14 @@ const total = require("./components/clockin-clockout/total");
 const reports = require("./components/police-reports/reports");
 
 
-const cron = require("cron").CronJob;
+let CronJob = require("cron").CronJob;
 
-new cron("0 59 23 * * FRI", () =>{
+new CronJob("0 59 23 * * FRI", () =>{
     let sql = "UPDATE gta_rp SET weekly_hours = 0";
     database.query(sql)
 });
 
-new cron("0 59 23 * * FRI", () =>{
+new CronJob("0 59 23 * * FRI", () =>{
     let sql = "UPDATE gta_ems SET weekly_hours = 0";
     database.query(sql)
 });
