@@ -2,19 +2,19 @@ module.exports = {
     weekly: async (message, database, table) => {
         const sql = "SELECT * from "+ table +" WHERE weekly_hours IS NOT NULL";
         const results = await database.query(sql);
+        let array = []
         try {
             for (let player of results) {
-                message.channel.send({
-                    "embed": {
-                        "description":
-                            "** Name: **" + "<@" + player.discord_uid + ">" +
-                            "** Hours: **" + player.weekly_hours
-                    }
-                });
+                let data = " " + "<@" + player.discord_uid + ">" + " " + player.weekly_hours + "\n"
+                array.push(data)
             }
+            message.channel.send({
+                "embed":{
+                    "description":array.toString().replace(/[,]/g,"")
+                }
+            })
         }catch(err){
             console.log(err)
         }
-        console.log(results)
     }
 };

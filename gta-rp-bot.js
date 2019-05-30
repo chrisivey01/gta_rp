@@ -61,7 +61,7 @@ client.on("message", async message => {
         clockOut.clockOut(message, database, table)
     }
 
-    if (message.content.startsWith("!weekly") && message.channel.id === "579428028455714816" || (message.content.startsWith("!weekly") &&  message.channel.id === "571551283262128148")) {
+    if (message.content.startsWith("!weekly")){
         if(message.channel.id === "579428028455714816") {
             table = "gta_rp";
         }else{
