@@ -61,8 +61,6 @@ module.exports = {
                 ". Reason: " +
                 bolo.reason +
                 " ----  Active " +
-                time.d +
-                " days " +
                 time.h +
                 " hours " +
                 time.m +
