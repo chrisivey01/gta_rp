@@ -1,64 +1,17 @@
 module.exports = {
     reports: async (message, database, Discord) => {
-        let name;
-        let description;
+        let bolo = message.content.split(' ').splice(1).toString().replace(/,/g, ' ');
 
-        let reportArray = message.content.split(" ");
-        reportArray.shift();
-        name = reportArray[0];
-        reportArray.shift();
-        description = reportArray.join().replace(/,/g, " ");
+        message.channel.send("BOLO inserted...")
 
-        const collector = new Discord.MessageCollector(message.channel, m => m.author.id === message.author.id, { time: 10000 });
+        const sql = "INSERT INTO police_reports SET active = ?, reason = ?";
+        const data = [1, bolo];
+        await database.query(sql,data);
 
-        message.channel.send("Is this correct? Type YES or NO");
-        message.channel.send("Name:" + name);
-        message.channel.send("Description:" + description);
+        const idBoloSql = "SELECT id FROM police_reports WHERE reason = ?";
+        const obtainId = [bolo];
+        const results = await database.query(idBoloSql, obtainId);
 
-        collector.on('collect', message => {
-            if(message.content.toLowerCase() === "yes" ){
-                message.channel.send("Processing...")
-            }else{
-                message.channel.send("Aborting... please resubmit.")
-            }
-        })
+        message.channel.send(bolo + " Which the ID in the LSPD DB is: " + results[0].id);
     }
 };
-      // message.channel.send("Please enter the individuals name: ");
-      //
-      // const collector = new Discord.MessageCollector(message.channel, m => m.author.id === message.author.id, { time: 10000 });
-      //
-      // collector.on('collect', message => {
-      //     name = message.content;
-      //     message.channel.send("You've entered " + name);
-      //
-      //     message.channel.send("Please type file, or search database.");
-      //
-      //     if(message.content === "file"){
-      //         message.channel.send("Please insert your report on " + name);
-      //
-      //     }else if(message.content === "search database"){
-      //         message.channel.send("Searching database for reports on " + name +" .... ")
-      //
-      //     }else{
-      //         message.channel.send("Invalid entry....")
-      //     }
-      // });
-
-      // collector.on('collector', message => {
-      //
-      // })
-//   }
-// };
-
-
-// message.author.send("See or Change?");
-// const collector = new Discord.MessageCollector(message.channel, m => m.author.id === message.author.id, { time: 10000 });
-// console.log(collector)
-// collector.on('collect', message => {
-//     if (message.content == "See") {
-//         message.channel.send("You Want To See Someones Spec OK!");
-//     } else if (message.content == "Change") {
-//         message.channel.send("You Want To Change Your Spec OK!");
-//     }
-// })
