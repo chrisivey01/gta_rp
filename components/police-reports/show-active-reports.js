@@ -9,6 +9,8 @@ module.exports = {
           const currentTime = new Date();
           const timestampDb = bolo.time_stmp.getTime();
           const msHours = currentTime.getTime() - timestampDb;
+          console.log(currentTime.getTime())
+          console.log(timestampDb)
           const time = destructMS(msHours);
           client.guilds
             .get(server)
