@@ -7,10 +7,7 @@ module.exports = {
       if (results.length > 0) {
         for (let bolo of results) {
           const currentTime = new Date();
-          const timestampDb = bolo.time_stmp.getTime();
-          const msHours = currentTime.getTime() - timestampDb;
-          console.log(currentTime.getTime())
-          console.log(timestampDb)
+          const msHours = currentTime.getTime() - bolo.time_stmp.getTime();
           const time = destructMS(msHours);
           client.guilds
             .get(server)
@@ -23,8 +20,6 @@ module.exports = {
                   ". Reason: " +
                   bolo.reason +
                   " ----  Active " +
-                  time.d +
-                  " days " +
                   time.h +
                   " hours " +
                   time.m +
@@ -47,12 +42,9 @@ module.exports = {
     } else {
       if (results.length > 0) {
         for (let bolo of results) {
-          let currentTime = new Date();
-          let timestampDb = bolo.time_stmp.getTime();
-          let msHours = timestampDb - currentTime.getTime();
-          console.log(currentTime.getTime())
-          console.log(timestampDb)
-          let time = destructMS(msHours);
+          const currentTime = new Date();
+          const msHours = currentTime.getTime() - bolo.time_stmp.getTime();
+          const time = destructMS(msHours);
           message.channel.send({
             embed: {
               description:
