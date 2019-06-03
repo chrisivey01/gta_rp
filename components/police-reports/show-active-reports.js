@@ -50,6 +50,8 @@ module.exports = {
           let currentTime = new Date();
           let timestampDb = bolo.time_stmp.getTime();
           let msHours = timestampDb - currentTime.getTime();
+          console.log(currentTime.getTime())
+          console.log(timestampDb)
           let time = destructMS(msHours);
           message.channel.send({
             embed: {
