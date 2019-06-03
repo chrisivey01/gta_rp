@@ -133,7 +133,7 @@ client.on("message", async message => {
   }
 
   if (message.content.startsWith("!active")) {
-    active.showReports(message, database, Discord, null, null, client);
+    active.showReports(message, database, null, "573969751433412629", "566472673849507841", client);
   }
 
   if (message.content.startsWith("!remove")) {
