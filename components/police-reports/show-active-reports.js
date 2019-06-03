@@ -6,10 +6,10 @@ module.exports = {
     if (channel) {
       if (results.length > 0) {
         for (let bolo of results) {
-          let currentTime = new Date();
-          let timestampDb = bolo.time_stmp.getTime();
-          let msHours = timestampDb - currentTime.getTime();
-          let time = destructMS(msHours);
+          const currentTime = new Date();
+          const timestampDb = bolo.time_stmp.getTime();
+          const msHours = currentTime.getTime() - timestampDb;
+          const time = destructMS(msHours);
           client.guilds
             .get(server)
             .channels.get(channel)
