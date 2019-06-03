@@ -18,7 +18,7 @@ const remove = require("./components/police-reports/remove-active-reports");
 
 var CronJob = require("cron").CronJob;
 new CronJob(
-  "0 0 */6 * * *",
+  "0 0 */3 * * *",
   function() {
     //first number is discord channel ID, 2nd is discord server ID
     active.showReports(null, database, null, "573969751433412629", "566472673849507841", client);
