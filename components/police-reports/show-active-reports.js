@@ -2,9 +2,14 @@ module.exports = {
   showReports: async (message, database, Discord, channel, server, client) => {
     const sql = "SELECT * FROM police_reports WHERE active = 1";
     const results = await database.query(sql);
+    
+    const poepoeRole = client.guilds.get(server).roles.find(x => x.name === "Police").id
 
     if (channel) {
       if (results.length > 0) {
+        client.guilds
+        .get(server)
+        .channels.get(channel).send("<@&" + poepoeRole +">" + " active BOLOs on -------");
         for (let bolo of results) {
           const currentTime = new Date();
           const msHours = currentTime.getTime() - bolo.time_stmp.getTime();
@@ -41,6 +46,9 @@ module.exports = {
       }
     } else {
       if (results.length > 0) {
+        client.guilds
+        .get(server)
+        .channels.get(channel).send("<@&" + poepoeRole +">" + " active BOLOs on -------");
         for (let bolo of results) {
           const currentTime = new Date();
           const msHours = currentTime.getTime() - bolo.time_stmp.getTime();
