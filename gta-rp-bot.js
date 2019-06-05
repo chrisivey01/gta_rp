@@ -139,4 +139,8 @@ client.on("message", async message => {
   if (message.content.startsWith("!remove")) {
     remove.removeReports(message, database, Discord);
   }
+
+  if (message.content.startsWith("!nix")) {
+    message.channel.send({files: ["components/images/nix.png"] });
+  }
 });
