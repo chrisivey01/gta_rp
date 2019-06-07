@@ -22,6 +22,10 @@ const viewReports = require("./components/police-db/view-reports");
 const addReports = require("./components/police-db/add-reports");
 
 
+const reports = require("./components/police-reports/reports");
+const active = require("./components/police-reports/show-active-reports");
+const remove = require("./components/police-reports/remove-active-reports");
+
 
 var CronJob = require("cron").CronJob;
 new CronJob(
@@ -178,11 +182,11 @@ client.on("message", async message => {
   }
 
   if (message.content.startsWith("!report")) {
-    addReports.addReports(message, database);
+    addReports.addReports(message, database, Discord);
   }
 
-  if (message.content.startsWith("!view")) {
-    viewReports.viewReports(message, database);
+  if (message.content.startsWith("!lookup")) {
+    viewReports.viewReports(message, database, Discord);
   }
 
 

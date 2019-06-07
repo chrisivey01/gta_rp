@@ -1,9 +1,11 @@
 module.exports = {
 
-    viewReports: (message, database) => {
-        message.channel.send("view-reports works and chris is a shithead");
-    
+    viewReports: async (message, database) => {
+        const name = message.content.split(" ")[1];        
+        const sql = "SELECT * FROM pd_cad WHERE player_name = ?";
+        const results = await database.query(sql, name);
+        
+        message.channel.send("Found "  + results.length + " results.")
+        
     }
-
-
 }
