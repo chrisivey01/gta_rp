@@ -87,7 +87,7 @@ new CronJob(
 
     const results = await database.query(sql);
 
-    dmEms.dmEms(results, "579428028455714816", "566472673849507841", client)
+    dmEms.dmEms(results, "571551283262128148", "566472673849507841", client)
 
   },
   null,
