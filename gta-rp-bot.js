@@ -35,7 +35,7 @@ new CronJob(
   function () {
     //first number is discord channel ID, 2nd is discord server ID
     active.showReports(null, database, null, "573969751433412629", "566472673849507841", client);
-    console.log("You will see this message every 6 hours");
+    console.log("You will see this message every 3 hours");
   },
   null,
   true,
@@ -185,7 +185,7 @@ client.on("message", async message => {
     addReports.addReports(message, database, Discord);
   }
 
-  if (message.content.startsWith("!lookup")) {
+  if (message.content.startsWith("!view")) {
     viewReports.viewReports(message, database, Discord);
   }
 
