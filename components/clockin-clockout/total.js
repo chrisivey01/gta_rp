@@ -5,7 +5,7 @@ module.exports = {
         let array = []
         try {
             for (let player of results) {
-                let data = " " + "<@" + player.discord_uid + ">" + " " + player.weekly_hours + "\n"
+                let data = " " + "<@" + player.discord_uid + ">" + " " + player.total_hours + "\n"
                 array.push(data)
             }
             message.channel.send({
